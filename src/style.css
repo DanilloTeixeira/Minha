@@ -1,0 +1,210 @@
+/* ============================
+   RESET & BASE
+   ============================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body{ height:100%; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg,#F3F4F6 0%,#E5E7EB 100%);
+  color: #1F2937;
+  line-height: 1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x: hidden;
+}
+
+/* ============================
+   HEADER / NAV
+   ============================ */
+header{
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  position: sticky; top:0; z-index:1000;
+  padding: 1.2rem 0;
+}
+nav{
+  max-width:1200px; margin:0 auto; padding:0 2rem;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.logo{ font-size:1.8rem; font-weight:700; color:#276EF1; text-decoration:none; transition:transform .25s ease; }
+.logo:hover{ transform:scale(1.04); }
+.nav-links{ display:flex; gap:2rem; list-style:none; }
+.nav-links a{
+  color:#1F2937; text-decoration:none; font-weight:500; position:relative;
+  transition: color .2s ease;
+}
+.nav-links a::after{
+  content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:#276EF1;
+  transition: width .25s ease;
+}
+.nav-links a:hover, .nav-links a.active{ color:#276EF1; }
+.nav-links a:hover::after, .nav-links a.active::after{ width:100%; }
+
+/* ============================
+   HERO
+   ============================ */
+.hero{
+  max-width:1200px; margin:4rem auto; padding:0 2rem;
+  display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;
+  animation: fadeIn .7s ease both;
+}
+@keyframes fadeIn{ from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none} }
+
+.hero-content h1{ font-size:2.6rem; font-weight:700; margin-bottom:.6rem; color:#1F2937; }
+.hero-content .subtitle{ font-size:1.15rem; color:#276EF1; margin-bottom:1rem; }
+.hero-content p{ color:#6B7280; font-size:1rem; line-height:1.7; margin-bottom:1.2rem; }
+
+.hero-image{ display:flex; justify-content:center; }
+.profile-photo{
+  width:350px; height:350px; border-radius:50%; object-fit:cover;
+  border:8px solid #fff; box-shadow:0 20px 60px rgba(39,110,241,0.25);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.profile-photo:hover{ transform:scale(1.04) rotate(1.5deg); box-shadow:0 30px 80px rgba(39,110,241,0.35); }
+
+/* ============================
+   BUTTONS
+   ============================ */
+.cta-buttons{ display:flex; gap:1rem; flex-wrap:wrap; }
+.btn{
+  padding:.9rem 1.8rem; border-radius:50px; font-weight:600; text-decoration:none;
+  display:inline-flex; align-items:center; gap:.5rem; cursor:pointer; border:none;
+}
+.btn-primary{ background:#276EF1; color:#fff; box-shadow:0 8px 22px rgba(39,110,241,0.22); }
+.btn-primary:hover{ background:#1E5CD6; transform:translateY(-2px); }
+.btn-secondary{ background:#fff; color:#276EF1; border:2px solid #276EF1; }
+.btn-secondary:hover{ background:#276EF1; color:#fff; }
+
+/* ============================
+   SECTIONS (titles/subtitles)
+   ============================ */
+section{ max-width:1200px; margin:6rem auto; padding:0 2rem; }
+.section-title{ text-align:center; font-size:2.4rem; font-weight:700; margin-bottom:1rem; }
+.section-subtitle{ text-align:center; color:#6B7280; margin-bottom:2.2rem; }
+
+/* ============================
+   ABOUT CARD
+   ============================ */
+.about-content{
+  background:#fff; padding:2.6rem; border-radius:16px;
+  box-shadow:0 10px 36px rgba(0,0,0,0.06); color:#374151;
+  font-size:1.03rem; line-height:1.8;
+}
+
+/* ============================
+   VIDEOS GRID (mantido como original)
+   ============================ */
+.videos-grid{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin:20px auto; max-width:1000px;
+}
+.videos-grid video{
+  width:100%; height:auto; border-radius:10px; outline:none; display:block;
+  background:#000;
+}
+/* Observação: para garantir que NÃO haja autoplay, verifique no HTML se NÃO existe "autoplay" no tag <video>.
+   CSS não adiciona autoplay; o controle é via HTML/JS. */
+
+/* ============================
+   GALLERY
+   ============================ */
+.gallery-grid{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:15px;
+  max-width:1200px; margin:0 auto; padding:10px;
+}
+
+/* Aqui cobrimos ambos os padrões: imagens com / sem classe .gallery-img */
+.gallery-item{ overflow:hidden; border-radius:12px; box-shadow:0 4px 14px rgba(0,0,0,0.12); cursor:pointer; background:#fff; transition:transform .25s ease, box-shadow .25s ease; }
+.gallery-item:hover{ transform:translateY(-6px); box-shadow:0 18px 40px rgba(0,0,0,0.15); }
+
+/* Tamanho das imagens = 200px (igual ao seu CSS original) */
+.gallery-item img,
+.gallery-img{
+  width:100%; height:200px; object-fit:cover; display:block; transition:transform .35s ease;
+}
+.gallery-item:hover img,
+.gallery-item:hover .gallery-img{ transform:scale(1.08); }
+
+.gallery-caption{ padding:12px; color:#6B7280; font-size:.95rem; }
+
+/* ============================
+   LIGHTBOX (usando IDs/classes do seu HTML original)
+   ============================ */
+/* fundo escuro */
+#lightbox{
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85);
+  justify-content:center; align-items:center; z-index:9999; padding:20px;
+}
+/* mostrado quando JS adiciona .active */
+#lightbox.active{ display:flex; }
+
+/* imagem ampliada */
+#lightbox img{ max-width:90%; max-height:90%; border-radius:10px; box-shadow:0 20px 60px rgba(0,0,0,0.6); }
+
+/* botão fechar (seu HTML usa class="close-btn") */
+.close-btn{
+  position:absolute; top:20px; right:40px; font-size:50px; color:#fff; cursor:pointer;
+  user-select:none;
+}
+
+/* ============================
+   TIMELINE (mantido visual moderno)
+   ============================ */
+.timeline{ max-width:900px; margin:0 auto; padding:2rem 0; position:relative; }
+.timeline::before{
+  content:""; position:absolute; left:50%; transform:translateX(-50%); width:4px; top:0; bottom:0;
+  background:linear-gradient(to bottom,#276EF1,#1E5CD6);
+}
+.timeline-item{ display:flex; margin:2rem 0; position:relative; }
+.timeline-item:nth-child(odd){ flex-direction:row-reverse; }
+.timeline-content{
+  background:#fff; padding:1.5rem; width:45%; border-radius:12px; box-shadow:0 8px 30px rgba(0,0,0,0.08);
+}
+.timeline-dot{
+  width:20px; height:20px; background:#276EF1; border-radius:50%;
+  position:absolute; left:50%; transform:translateX(-50%); border:4px solid #fff;
+  box-shadow:0 6px 18px rgba(39,110,241,0.35);
+}
+
+/* ============================
+   HOBBY / INFO CARDS
+   ============================ */
+.hobby-card, .info-card{
+  background:#fff; padding:2rem; border-radius:14px; box-shadow:0 10px 36px rgba(0,0,0,0.06);
+  transition:transform .25s ease, box-shadow .25s ease;
+  margin-top:1rem;
+}
+.hobby-card:hover, .info-card:hover{ transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,0.12); }
+
+.hobby-icon{ font-size:2.6rem; padding:1rem; border-radius:12px; color:#fff; display:inline-flex;
+  background:linear-gradient(135deg,#276EF1,#1E5CD6);
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+footer{ background:#1F2937; color:#fff; text-align:center; padding:2rem; margin-top:4rem; }
+
+/* ============================
+   PAGE IDS (manter switching via JS)
+   ============================ */
+#home-page, #hobbys-page, #carreira-page{ display:none; }
+#home-page.active, #hobbys-page.active, #carreira-page.active{ display:block; }
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+@media (max-width: 992px){
+  .hero{ grid-template-columns:1fr; text-align:center; gap:2rem; }
+  .profile-photo{ width:260px; height:260px; margin:0 auto; }
+  .videos-grid{ grid-template-columns:repeat(2,1fr); max-width:700px; }
+  .gallery-item img, .gallery-img{ height:180px; }
+}
+@media (max-width: 600px){
+  nav{ padding:0 1rem; }
+  .nav-links{ gap:1rem; flex-wrap:wrap; justify-content:center; }
+  .videos-grid{ grid-template-columns:1fr; max-width:420px; }
+  .gallery-grid{ grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px; padding:6px; }
+  .gallery-item img, .gallery-img{ height:140px; }
+  .profile-photo{ width:200px; height:200px; }
+  .hero-content h1{ font-size:1.6rem; }
+}
