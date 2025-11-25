@@ -6,14 +6,16 @@ const gallery = document.getElementById("gallery-grid");
 if (gallery) {
     const photos = [
         "../image/ju.jpeg",
+        "../image/fam.jpeg",
         "../image/maq2.jpeg",
         "../image/maquina2.jpeg",
         "../image/ps.jpeg",
         "../image/spfc2.jpeg",
         "../image/nunja.jpeg",
         "../image/danfit.jpeg",
-        "../image/pc.jpeg",
-        "../image/fam.jpeg"
+        "../image/pc.jpeg",        
+        "../image/W3d.jpeg",
+        "../image/w3d1.jpeg"
     ];
 
     photos.forEach(src => {
